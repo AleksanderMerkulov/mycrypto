@@ -1,11 +1,21 @@
-import logo from './logo.svg';
 import {Layout} from "antd";
+import AppSider from "./components/AppSider";
+import AppHeader from "./components/AppHeader";
+import AppContent from "./components/AppContent";
+import {CryptoContextProvider} from "./context/cryptoContext";
 
 function App() {
   return (
-    <Layout>
+      <CryptoContextProvider>
 
-    </Layout>
+        <Layout>
+          <AppSider/>
+          <Layout>
+            <AppHeader/>
+            <AppContent/>
+          </Layout>
+        </Layout>
+      </CryptoContextProvider>
   );
 }
 
