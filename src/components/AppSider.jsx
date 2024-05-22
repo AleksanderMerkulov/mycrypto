@@ -2,11 +2,22 @@ import Sider from "antd/es/layout/Sider";
 import {List} from "antd";
 import styled from "styled-components";
 import {useState} from "react";
+import {useCrypto} from "../context/cryptoContext";
 
 export default function AppSider(){
-    const data = [
-        'Мой портфель',
-        'Рынок'
+    const pages = [
+        {
+            title: 'Мой портфель',
+            section: 0
+        },
+        {
+            title: 'Кошелёк',
+            section: 1
+        },
+        {
+            title: 'Рынок',
+            section: 2
+        },
     ]
 
     const CryptoLogo = styled.div`
@@ -19,21 +30,29 @@ export default function AppSider(){
       justify-content: center;
     `
 
-    const SectionClicker = styled.button`
-      border: none;
+    const ListItem = styled.div`
+      padding-left: 10px;
       
+      &.active{
+        font-weight: bold;
+      }
     `
 
-    const [s, setS] = useState(1)
+    const {section, setSection} = useCrypto()
 
     return (
         <Sider theme={"light"}>
             <CryptoLogo >
-                My Crypto {s}
+                My Crypto
             </CryptoLogo>
             <List
-                dataSource={data}
-                renderItem={(item) => <List.Item onClick={()=>setS(0)}>{item}</List.Item>}
+                dataSource={pages}
+                renderItem={(item) => {
+                    return <List.Item onClick={()=>setSection(item.section)}>
+                                <ListItem className={section===item.section?"active":""}>{item.title}</ListItem>
+                            </List.Item>
+                }
+                }
             >
             </List>
 

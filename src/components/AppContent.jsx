@@ -3,15 +3,17 @@ import {useCrypto} from "../context/cryptoContext";
 import {Spin} from "antd";
 
 export default function AppContent(){
-    const {loading, assets, crypto} = useCrypto()
+    const {loading, assets, crypto, section} = useCrypto()
 
     if (loading) {
         return <Spin fullscreen/>
     }
 
+
+
     return(
         <Content>
-            fff
+            {section===1?'fff':'eeee'}
         </Content>
     )
 }

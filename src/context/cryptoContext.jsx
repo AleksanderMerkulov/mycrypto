@@ -4,7 +4,8 @@ import {getAssets, getCoinsInfo} from "../data";
 const CryptoContext = createContext({
     assets: [],
     crypto: [],
-    loading: false
+    loading: false,
+    section: 0,
 })
 
 export function CryptoContextProvider({ children }){
@@ -12,6 +13,7 @@ export function CryptoContextProvider({ children }){
     const [loading, setLoading] = useState(false)
     const [assets, setAssets] = useState([])
     const [crypto, setCrypto] = useState([])
+    const [section, setSection] = useState(0)
 
     function percentDifference(a, b) {
         return +(100 * Math.abs((a - b) / ((a + b) / 2))).toFixed(2)
@@ -50,7 +52,7 @@ export function CryptoContextProvider({ children }){
     }
 
     return (
-        <CryptoContext.Provider value={{loading, assets, crypto, addAsset}}>
+        <CryptoContext.Provider value={{loading, assets, crypto, addAsset, section, setSection}}>
             {children}
         </CryptoContext.Provider>
     )
