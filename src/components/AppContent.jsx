@@ -14,6 +14,11 @@ export default function AppContent(){
     return(
         <Content>
             {section===1?'fff':'eeee'}
+            {
+                assets.map((value, index)=>{
+                    return <div key={value.id}>{value.name}</div>
+                })
+            }
         </Content>
     )
 }
