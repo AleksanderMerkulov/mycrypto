@@ -1,6 +1,7 @@
 import {Content} from "antd/es/layout/layout";
 import {useCrypto} from "../context/cryptoContext";
 import {Spin} from "antd";
+import Market from "./Market";
 
 export default function AppContent(){
     const {loading, assets, crypto, section} = useCrypto()
@@ -9,16 +10,20 @@ export default function AppContent(){
         return <Spin fullscreen/>
     }
 
-
+    function showSection(number)
+    {
+        switch (number) {
+            case 2:
+            {
+                return <Market/>
+            }
+        }
+    }
 
     return(
         <Content>
             {section===1?'fff':'eeee'}
-            {
-                assets.map((value, index)=>{
-                    return <div key={value.id}>{value.name}</div>
-                })
-            }
+            {showSection(section)}
         </Content>
     )
 }
