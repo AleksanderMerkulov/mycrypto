@@ -5,7 +5,7 @@ const CryptoContext = createContext({
     assets: [],
     crypto: [],
     loading: false,
-    section: 0,
+    section: 1,
 })
 
 export function CryptoContextProvider({ children }){
