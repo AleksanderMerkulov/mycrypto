@@ -3,6 +3,7 @@ import {useCrypto} from "../context/cryptoContext";
 import {Spin} from "antd";
 import Market from "./Market";
 import Wallet from "./Wallet";
+import WalletAnalysis from "./WalletAnalysis";
 
 export default function AppContent(){
     const {loading, assets, crypto, section} = useCrypto()
@@ -14,6 +15,10 @@ export default function AppContent(){
     function showSection(number)
     {
         switch (number) {
+            case 0:
+            {
+                return <WalletAnalysis/>
+            }
             case 1:
             {
                 return <Wallet/>
